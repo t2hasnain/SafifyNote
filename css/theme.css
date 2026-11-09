@@ -1,0 +1,114 @@
+/* SafifyNote — design tokens
+   Type: Inter (UI/body/headings) + JetBrains Mono (code)
+   Palette: clean white surface, ink near-black text, violet brand accent,
+            teal = code cells, amber = diagram cells (cell-type spine colors)
+*/
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/inter-400.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/inter-500.woff2') format('woff2');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/inter-600.woff2') format('woff2');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/inter-700.woff2') format('woff2');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../fonts/jbmono-400.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../fonts/jbmono-500.woff2') format('woff2');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../fonts/jbmono-700.woff2') format('woff2');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+
+:root {
+  --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+
+  --brand: #5B5FEF;
+  --brand-ink: #4245C4;
+  --brand-soft: #EEF0FF;
+  --code: #0EA5A0;
+  --code-soft: #E4F8F6;
+  --diagram: #E8952F;
+  --diagram-soft: #FEF3E2;
+  --danger: #E5484D;
+
+  --bg: #FFFFFF;
+  --surface: #F7F8FA;
+  --surface-2: #F0F1F5;
+  --border: #E5E7EB;
+  --ink: #14171F;
+  --ink-2: #565A66;
+  --ink-3: #8A8F9C;
+  --shadow: 0 8px 24px -8px rgba(20, 23, 31, 0.12), 0 2px 6px -2px rgba(20,23,31,0.06);
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+[data-theme="dark"] {
+  --brand: #7A7DF5;
+  --brand-ink: #9497FF;
+  --brand-soft: #22243D;
+  --code: #2DD4C7;
+  --code-soft: #12302F;
+  --diagram: #F2A94E;
+  --diagram-soft: #362509;
+  --danger: #F17075;
+
+  --bg: #101218;
+  --surface: #171A21;
+  --surface-2: #1E212A;
+  --border: #2A2E38;
+  --ink: #EDEFF3;
+  --ink-2: #ABB0BE;
+  --ink-3: #6B7080;
+  --shadow: 0 8px 28px -8px rgba(0,0,0,0.55), 0 2px 8px -2px rgba(0,0,0,0.4);
+}
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0;
+  font-family: var(--font-ui);
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+body { transition: background .18s ease, color .18s ease; }
+
+::selection { background: var(--brand-soft); color: var(--brand-ink); }
+
+button {
+  font-family: var(--font-ui);
+  cursor: pointer;
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: var(--ink-3); }
+
+/* Author rules like `.modal-overlay { display:flex }` otherwise beat the
+   browser's built-in `[hidden]{display:none}` rule (author > user-agent
+   origin, regardless of specificity), so panels toggled via `.hidden = true`
+   would stay visually shown. This makes the hidden attribute always win. */
+[hidden] { display: none !important; }
